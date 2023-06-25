@@ -2,6 +2,7 @@ import "./globals.css"
 import { cn } from "@/lib/utils"
 import { fontSans } from "@/lib/fonts"
 import { SiteHeader } from "@/components/site-header"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export default function RootLayout({
   children,
@@ -17,10 +18,12 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <div className="min-h-screen flex flex-col">
-          <SiteHeader />
-          <div className="flex-1 flex flex-col">{children}</div>
-        </div>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="min-h-screen flex flex-col">
+            <SiteHeader />
+            <div className="flex-1 flex flex-col">{children}</div>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )
