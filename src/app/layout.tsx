@@ -1,8 +1,14 @@
-import "./globals.css"
 import { cn } from "@/lib/utils"
 import { fontSans } from "@/lib/fonts"
+import { siteConfig } from "@/config/site"
+
+import "./globals.css"
 import { SiteHeader } from "@/components/site-header"
-import { ThemeProvider } from "@/components/theme-provider"
+
+export const metadata = {
+  title: siteConfig.name,
+  description: siteConfig.description,
+}
 
 export default function RootLayout({
   children,
@@ -10,20 +16,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
+    <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen font-sans antialiased bg-white border-b border-gray-200 dark:bg-gray-800",
           fontSans.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="min-h-screen flex flex-col">
-            <SiteHeader />
-            <div className="flex-1 flex flex-col">{children}</div>
-          </div>
-        </ThemeProvider>
+        <SiteHeader />
+        <div>{children}</div>
       </body>
     </html>
   )
