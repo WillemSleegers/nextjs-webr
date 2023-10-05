@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site"
 import { IconGitHub } from "./icons"
+import { ThemeToggle } from "./theme-toggle"
 
 const items = siteConfig.mainNav
 
@@ -30,16 +31,19 @@ export function SiteHeader() {
             </nav>
           ) : null}
         </div>
-        <a
-          className="w-10 h-10 p-2 rounded cursor-pointer 
-              text-gray-800 dark:text-white
+        <div className="flex">
+          <a
+            className="w-10 h-10 p-2 rounded cursor-pointer 
+              text-gray-600 dark:text-gray-400 dark:hover:text-white
               hover:bg-gray-100 dark:hover:bg-gray-700"
-          href={siteConfig.links.github}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <IconGitHub />
-        </a>
+            href={siteConfig.links.github}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <IconGitHub />
+          </a>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   )
